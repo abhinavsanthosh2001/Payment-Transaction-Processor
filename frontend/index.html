@@ -8,73 +8,87 @@
 </head>
 <body>
     <div class="container">
-        <h1>Transaction Processor</h1>
-
-        <div class="upload-section">
-            <h2>Upload Transactions</h2>
-            <input type="file" id="fileInput" accept=".csv">
-            <button id="uploadBtn">Upload</button>
-            <p id="uploadMessage"></p>
-        </div>
-
-        <div class="buttons-section">
-            <h2>Actions</h2>
-            <button id="accountsBtn">View Chart of Accounts</button>
-            <button id="collectionsBtn">View Collections</button>
-            <button id="badTransactionsBtn">View Bad Transactions</button>
-            <button id="resetBtn">Reset System</button>
-        </div>
-
-        <div class="results-section">
-            <h2>Results</h2>
-
-            <h3>Chart of Accounts</h3>
-            <table id="accountsTable">
-                <thead>
-                    <tr>
-                        <th>Account Name</th>
-                        <th>Card Number</th>
-                        <th>Balance</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-
-            <h3>Collections (Cards with < 0.00 Balance)</h3>
-            <table id="collectionsTable">
-                <thead>
-                    <tr>
-                        <th>Account Name</th>
-                        <th>Card Number</th>
-                        <th>Balance</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-
-            <h3>Bad Transactions</h3>
-            <table id="badTransactionsTable">
-                <thead>
-                    <tr>
-                        <th>Account Name</th>
-                        <th>Card Number</th>
-                        <th>Transaction Amount</th>
-                        <th>Transaction Type</th>
-                        <th>Description</th>
-                        <th>Target Card Number</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-
-            <div id="pagination">
-                <button id="prevPageBtn" disabled>Previous</button>
-                <span id="pageInfo"></span>
-                <button id="nextPageBtn" disabled>Next</button>
-            </div>
-        </div>
+        <header>
+            <h1>Transaction Processor</h1>
+        </header>
+        <main>
+            <section class="upload-section">
+                <h2>Upload File</h2>
+                <input type="file" id="fileInput">
+                <button id="uploadBtn">Upload</button>
+            </section>
+            <section class="actions-section">
+                <h2>Actions</h2>
+                <button id="resetBtn">Reset System</button>
+                <button id="accountsBtn">Fetch Accounts</button>
+                <button id="collectionsBtn">Fetch Collections</button>
+                <button id="badTransactionsBtn">Fetch Bad Transactions</button>
+            </section>
+            <section class="table-section">
+                <h2>Accounts</h2>
+                <table id="accountsTable">
+                    <thead>
+                        <tr>
+                            <th>Account Name</th>
+                            <th>Card Number</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be populated here -->
+                    </tbody>
+                </table>
+                <div class="pagination-section" id="accountsPagination">
+                    <button id="prevAccountsPageBtn">Previous Page</button>
+                    <span id="accountsPageInfo">Page 1 of 1</span>
+                    <button id="nextAccountsPageBtn">Next Page</button>
+                </div>
+            </section>
+            <section class="table-section">
+                <h2>Collections</h2>
+                <table id="collectionsTable" class="hidden">
+                    <thead>
+                        <tr>
+                            <th>Account Name</th>
+                            <th>Card Number</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be populated here -->
+                    </tbody>
+                </table>
+                <div class="pagination-section" id="collectionsPagination">
+                    <button id="prevCollectionsPageBtn">Previous Page</button>
+                    <span id="collectionsPageInfo">Page 1 of 1</span>
+                    <button id="nextCollectionsPageBtn">Next Page</button>
+                </div>
+            </section>
+            <section class="table-section">
+                <h2>Bad Transactions</h2>
+                <table id="badTransactionsTable" class="hidden">
+                    <thead>
+                        <tr>
+                            <th>Account Name</th>
+                            <th>Card Number</th>
+                            <th>Transaction Amount</th>
+                            <th>Transaction Type</th>
+                            <th>Description</th>
+                            <th>Target Card Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be populated here -->
+                    </tbody>
+                </table>
+                <div class="pagination-section" id="badTransactionsPagination">
+                    <button id="prevBadTransactionsPageBtn">Previous Page</button>
+                    <span id="badTransactionsPageInfo">Page 1 of 1</span>
+                    <button id="nextBadTransactionsPageBtn">Next Page</button>
+                </div>
+            </section>
+        </main>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>

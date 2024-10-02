@@ -315,6 +315,12 @@ app.get('/cards', (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 5;
 
+    const accountsData = cards.flatMap(card => card.accounts.map(account => ({
+        accountName: account,
+        cardNumber: card.cardNumber,
+        balance: card.balance
+    })));
+    console.log("cards is being called");
     const paginatedResult = paginate(cards, page, limit);
 
     res.json({
