@@ -76,6 +76,7 @@ async function fetchAccounts(page) {
     }
 }
 
+
 async function fetchCollections(page) {
     currentPage.collections = page;
     try {

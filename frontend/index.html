@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transaction Processor</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
     <div class="container">
@@ -15,14 +16,14 @@
             <section class="upload-section">
                 <h2>Upload File</h2>
                 <input type="file" id="fileInput">
-                <button id="uploadBtn">Upload</button>
+                <button id="uploadBtn"><i class="fas fa-upload"></i> Upload</button>
             </section>
             <section class="actions-section">
                 <h2>Actions</h2>
-                <button id="resetBtn">Reset System</button>
-                <button id="accountsBtn">Fetch Accounts</button>
-                <button id="collectionsBtn">Fetch Collections</button>
-                <button id="badTransactionsBtn">Fetch Bad Transactions</button>
+                <button id="resetBtn" class="green-button"><i class="fas fa-redo"></i> Reset System</button>
+                <button id="accountsBtn"><i class="fas fa-user"></i> Fetch Accounts</button>
+                <button id="collectionsBtn"><i class="fas fa-money-bill"></i> Fetch Collections</button>
+                <button id="badTransactionsBtn"><i class="fas fa-exclamation-triangle"></i> Fetch Bad Transactions</button>
             </section>
             <section class="table-section">
                 <h2>Accounts</h2>
@@ -39,14 +40,14 @@
                     </tbody>
                 </table>
                 <div class="pagination-section" id="accountsPagination">
-                    <button id="prevAccountsPageBtn">Previous Page</button>
+                    <button id="prevAccountsPageBtn"><i class="fas fa-arrow-left"></i> Previous Page</button>
                     <span id="accountsPageInfo">Page 1 of 1</span>
-                    <button id="nextAccountsPageBtn">Next Page</button>
+                    <button id="nextAccountsPageBtn">Next Page <i class="fas fa-arrow-right"></i></button>
                 </div>
             </section>
             <section class="table-section">
                 <h2>Collections</h2>
-                <table id="collectionsTable" class="hidden">
+                <table id="collectionsTable">
                     <thead>
                         <tr>
                             <th>Account Name</th>
@@ -59,14 +60,14 @@
                     </tbody>
                 </table>
                 <div class="pagination-section" id="collectionsPagination">
-                    <button id="prevCollectionsPageBtn">Previous Page</button>
+                    <button id="prevCollectionsPageBtn"><i class="fas fa-arrow-left"></i> Previous Page</button>
                     <span id="collectionsPageInfo">Page 1 of 1</span>
-                    <button id="nextCollectionsPageBtn">Next Page</button>
+                    <button id="nextCollectionsPageBtn">Next Page <i class="fas fa-arrow-right"></i></button>
                 </div>
             </section>
             <section class="table-section">
                 <h2>Bad Transactions</h2>
-                <table id="badTransactionsTable" class="hidden">
+                <table id="badTransactionsTable">
                     <thead>
                         <tr>
                             <th>Account Name</th>
@@ -82,9 +83,9 @@
                     </tbody>
                 </table>
                 <div class="pagination-section" id="badTransactionsPagination">
-                    <button id="prevBadTransactionsPageBtn">Previous Page</button>
+                    <button id="prevBadTransactionsPageBtn"><i class="fas fa-arrow-left"></i> Previous Page</button>
                     <span id="badTransactionsPageInfo">Page 1 of 1</span>
-                    <button id="nextBadTransactionsPageBtn">Next Page</button>
+                    <button id="nextBadTransactionsPageBtn">Next Page <i class="fas fa-arrow-right"></i></button>
                 </div>
             </section>
         </main>
