@@ -7,69 +7,74 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Transaction Processor</h1>
-    
-    <section>
-        <h2>Upload Transactions</h2>
-        <input type="file" id="fileInput">
-        <button id="uploadBtn">Upload</button>
-    </section>
-    
-    <section>
-        <h2>System Control</h2>
-        <button id="resetBtn">Reset System</button>
-    </section>
-    
-    <section>
-        <h2>Chart of Accounts</h2>
-        <button id="accountsBtn">Show Accounts</button>
-        <table id="accountsTable">
-            <thead>
-                <tr>
-                    <th>Account Name</th>
-                    <th>Card Number</th>
-                    <th>Balance</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Data will be populated here -->
-            </tbody>
-        </table>
-    </section>
-    
-    <section>
-        <h2>Collections</h2>
-        <button id="collectionsBtn">Show Collections</button>
-        <table id="collectionsTable">
-            <thead>
-                <tr>
-                    <th>Account Name</th>
-                    <th>Card Number</th>
-                    <th>Balance</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Data will be populated here -->
-            </tbody>
-        </table>
-    </section>
-    
-    <section>
-        <h2>Bad Transactions</h2>
-        <button id="badTransactionsBtn">Show Bad Transactions</button>
-        <table id="badTransactionsTable">
-            <thead>
-                <tr>
-                    <th>Transaction</th>
-                    <th>Error</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Data will be populated here -->
-            </tbody>
-        </table>
-    </section>
-    
+    <div class="container">
+        <h1>Transaction Processor</h1>
+
+        <div class="upload-section">
+            <h2>Upload Transactions</h2>
+            <input type="file" id="fileInput" accept=".csv">
+            <button id="uploadBtn">Upload</button>
+            <p id="uploadMessage"></p>
+        </div>
+
+        <div class="buttons-section">
+            <h2>Actions</h2>
+            <button id="accountsBtn">View Chart of Accounts</button>
+            <button id="collectionsBtn">View Collections</button>
+            <button id="badTransactionsBtn">View Bad Transactions</button>
+            <button id="resetBtn">Reset System</button>
+        </div>
+
+        <div class="results-section">
+            <h2>Results</h2>
+
+            <h3>Chart of Accounts</h3>
+            <table id="accountsTable">
+                <thead>
+                    <tr>
+                        <th>Account Name</th>
+                        <th>Card Number</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <h3>Collections (Cards with < 0.00 Balance)</h3>
+            <table id="collectionsTable">
+                <thead>
+                    <tr>
+                        <th>Account Name</th>
+                        <th>Card Number</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <h3>Bad Transactions</h3>
+            <table id="badTransactionsTable">
+                <thead>
+                    <tr>
+                        <th>Account Name</th>
+                        <th>Card Number</th>
+                        <th>Transaction Amount</th>
+                        <th>Transaction Type</th>
+                        <th>Description</th>
+                        <th>Target Card Number</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <div id="pagination">
+                <button id="prevPageBtn" disabled>Previous</button>
+                <span id="pageInfo"></span>
+                <button id="nextPageBtn" disabled>Next</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
