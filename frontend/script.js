@@ -130,3 +130,4 @@ function populateTable(tableId, data, columns) {
         }
     });
 }
+ /// Now using in-memory data structures
