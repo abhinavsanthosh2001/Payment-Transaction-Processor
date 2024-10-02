@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Processor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Transaction Processor</h1>
+    
+    <section>
+        <h2>Upload Transactions</h2>
+        <input type="file" id="fileInput">
+        <button id="uploadBtn">Upload</button>
+    </section>
+    
+    <section>
+        <h2>System Control</h2>
+        <button id="resetBtn">Reset System</button>
+    </section>
+    
+    <section>
+        <h2>Chart of Accounts</h2>
+        <button id="accountsBtn">Show Accounts</button>
+        <table id="accountsTable">
+            <thead>
+                <tr>
+                    <th>Account Name</th>
+                    <th>Card Number</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be populated here -->
+            </tbody>
+        </table>
+    </section>
+    
+    <section>
+        <h2>Collections</h2>
+        <button id="collectionsBtn">Show Collections</button>
+        <table id="collectionsTable">
+            <thead>
+                <tr>
+                    <th>Account Name</th>
+                    <th>Card Number</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be populated here -->
+            </tbody>
+        </table>
+    </section>
+    
+    <section>
+        <h2>Bad Transactions</h2>
+        <button id="badTransactionsBtn">Show Bad Transactions</button>
+        <table id="badTransactionsTable">
+            <thead>
+                <tr>
+                    <th>Transaction</th>
+                    <th>Error</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be populated here -->
+            </tbody>
+        </table>
+    </section>
+    
+    <script src="script.js"></script>
+</body>
+</html>
