@@ -10,6 +10,8 @@ document.getElementById('nextCollectionsPageBtn').addEventListener('click', () =
 document.getElementById('prevBadTransactionsPageBtn').addEventListener('click', () => changePage('badTransactions', -1));
 document.getElementById('nextBadTransactionsPageBtn').addEventListener('click', () => changePage('badTransactions', 1));
 
+const API_SECRET_TOKEN = '9f8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b'; 
+
 let currentPage = {
     accounts: 1,
     collections: 1,
@@ -35,6 +37,9 @@ async function uploadFile() {
     try {
         const response = await fetch('http://localhost:3001/upload', {
             method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${API_SECRET_TOKEN}`
+            },
             body: formData
         });
         const result = await response.json();
@@ -50,7 +55,12 @@ async function uploadFile() {
 
 async function resetSystem() {
     try {
-        const response = await fetch('http://localhost:3001/reset', { method: 'POST' });
+        const response = await fetch('http://localhost:3001/reset', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${API_SECRET_TOKEN}`
+            }
+        });
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -64,7 +74,11 @@ async function resetSystem() {
 async function fetchAccounts(page) {
     currentPage.accounts = page;
     try {
-        const response = await fetch(`http://localhost:3001/cards?page=${page}&limit=10`);
+        const response = await fetch(`http://localhost:3001/cards?page=${page}&limit=10`, {
+            headers: {
+                'Authorization': `Bearer ${API_SECRET_TOKEN}`
+            }
+        });
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -80,7 +94,11 @@ async function fetchAccounts(page) {
 async function fetchCollections(page) {
     currentPage.collections = page;
     try {
-        const response = await fetch(`http://localhost:3001/collections?page=${page}&limit=10`);
+        const response = await fetch(`http://localhost:3001/collections?page=${page}&limit=10`, {
+            headers: {
+                'Authorization': `Bearer ${API_SECRET_TOKEN}`
+            }
+        });
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -95,7 +113,11 @@ async function fetchCollections(page) {
 async function fetchBadTransactions(page) {
     currentPage.badTransactions = page;
     try {
-        const response = await fetch(`http://localhost:3001/bad-transactions?page=${page}&limit=10`);
+        const response = await fetch(`http://localhost:3001/bad-transactions?page=${page}&limit=10`, {
+            headers: {
+                'Authorization': `Bearer ${API_SECRET_TOKEN}`
+            }
+        });
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -135,6 +157,7 @@ function updatePagination(type, current, total) {
 }
 
 function clearDisplay() {
+    // Clear the tables
     document.getElementById('accountsTable').querySelector('tbody').innerHTML = '';
     document.getElementById('collectionsTable').querySelector('tbody').innerHTML = '';
     document.getElementById('badTransactionsTable').querySelector('tbody').innerHTML = '';
@@ -152,3 +175,8 @@ function changePage(type, direction) {
 function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+// Initial fetch to populate the first page of each section
+fetchAccounts(1);
+fetchCollections(1);
+fetchBadTransactions(1);
