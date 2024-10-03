@@ -39,11 +39,16 @@ h2 {
     color: #333;
 }
 
-.upload-section, .actions-section {
+.upload-section {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
+}
+
+.file-upload-container {
+    display: flex;
+    align-items: center;
 }
 
 button {
@@ -56,6 +61,7 @@ button {
     display: flex;
     align-items: center;
     transition: background-color 0.3s ease;
+    margin-left: 10px; /* Add margin to separate buttons */
 }
 
 button i {
@@ -77,6 +83,14 @@ button:disabled {
 
 .green-button:hover {
     background-color: #218838; /* Darker green on hover */
+}
+
+.red-button {
+    background-color: #dc3545; /* Red color */
+}
+
+.red-button:hover {
+    background-color: #c82333; /* Darker red on hover */
 }
 
 .custom-file-label {
@@ -129,6 +143,10 @@ th {
     justify-content: center;
     align-items: center;
     margin-top: 10px;
+}
+
+.pagination-section.hidden {
+    display: none;
 }
 
 .pagination-section button {

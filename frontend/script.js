@@ -55,6 +55,7 @@ async function resetSystem() {
             throw new Error('Network response was not ok');
         }
         alert('System reset successfully.');
+        clearDisplay(); // Clear the display after resetting the system
     } catch (error) {
         console.error('Error resetting system:', error);
     }
@@ -75,7 +76,6 @@ async function fetchAccounts(page) {
         console.error('Error fetching accounts:', error);
     }
 }
-
 
 async function fetchCollections(page) {
     currentPage.collections = page;
@@ -127,12 +127,22 @@ function populateTable(tableId, data, columns) {
     });
 }
 
-function updatePagination(section, page, pages) {
-    currentPage[section] = page;
-    totalPages[section] = pages;
-    document.getElementById(`${section}PageInfo`).textContent = `Page ${page} of ${pages}`;
-    document.getElementById(`prev${capitalize(section)}PageBtn`).disabled = page <= 1;
-    document.getElementById(`next${capitalize(section)}PageBtn`).disabled = page >= pages;
+function updatePagination(section, currentPage, totalPages) {
+    const paginationSection = document.getElementById(`${section}Pagination`);
+    const pageInfo = document.getElementById(`${section}PageInfo`);
+    const prevPageBtn = document.getElementById(`prev${capitalizeFirstLetter(section)}PageBtn`);
+    const nextPageBtn = document.getElementById(`next${capitalizeFirstLetter(section)}PageBtn`);
+
+    pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+
+    if (totalPages > 1) {
+        paginationSection.classList.remove('hidden');
+    } else {
+        paginationSection.classList.add('hidden');
+    }
+
+    prevPageBtn.disabled = currentPage === 1;
+    nextPageBtn.disabled = currentPage === totalPages;
 }
 
 function changePage(section, delta) {
@@ -148,6 +158,18 @@ function changePage(section, delta) {
     }
 }
 
-function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
+function clearDisplay() {
+    // Clear the tables
+    document.getElementById('accountsTable').querySelector('tbody').innerHTML = '';
+    document.getElementById('collectionsTable').querySelector('tbody').innerHTML = '';
+    document.getElementById('badTransactionsTable').querySelector('tbody').innerHTML = '';
+
+    // Hide the pagination sections
+    document.getElementById('accountsPagination').classList.add('hidden');
+    document.getElementById('collectionsPagination').classList.add('hidden');
+    document.getElementById('badTransactionsPagination').classList.add('hidden');
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
