@@ -118,58 +118,37 @@ function populateTable(tableId, data, columns) {
 
     data.forEach(item => {
         const row = document.createElement('tr');
-        columns.forEach(column => {
+        columns.forEach(col => {
             const cell = document.createElement('td');
-            cell.textContent = item[column];
+            cell.textContent = item[col] || 'N/A'; // Fallback for missing properties
             row.appendChild(cell);
         });
         tableBody.appendChild(row);
     });
 }
 
-function updatePagination(section, currentPage, totalPages) {
-    const paginationSection = document.getElementById(`${section}Pagination`);
-    const pageInfo = document.getElementById(`${section}PageInfo`);
-    const prevPageBtn = document.getElementById(`prev${capitalizeFirstLetter(section)}PageBtn`);
-    const nextPageBtn = document.getElementById(`next${capitalizeFirstLetter(section)}PageBtn`);
-
-    pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
-
-    if (totalPages > 1) {
-        paginationSection.classList.remove('hidden');
-    } else {
-        paginationSection.classList.add('hidden');
-    }
-
-    prevPageBtn.disabled = currentPage === 1;
-    nextPageBtn.disabled = currentPage === totalPages;
-}
-
-function changePage(section, delta) {
-    const newPage = currentPage[section] + delta;
-    if (newPage > 0 && newPage <= totalPages[section]) {
-        if (section === 'accounts') {
-            fetchAccounts(newPage);
-        } else if (section === 'collections') {
-            fetchCollections(newPage);
-        } else if (section === 'badTransactions') {
-            fetchBadTransactions(newPage);
-        }
-    }
+function updatePagination(type, current, total) {
+    totalPages[type] = total;
+    document.getElementById(`${type}PageInfo`).textContent = `Page ${current} of ${total}`;
+    document.getElementById(`prev${capitalize(type)}PageBtn`).disabled = current === 1;
+    document.getElementById(`next${capitalize(type)}PageBtn`).disabled = current === total;
 }
 
 function clearDisplay() {
-    // Clear the tables
     document.getElementById('accountsTable').querySelector('tbody').innerHTML = '';
     document.getElementById('collectionsTable').querySelector('tbody').innerHTML = '';
     document.getElementById('badTransactionsTable').querySelector('tbody').innerHTML = '';
-
-    // Hide the pagination sections
-    document.getElementById('accountsPagination').classList.add('hidden');
-    document.getElementById('collectionsPagination').classList.add('hidden');
-    document.getElementById('badTransactionsPagination').classList.add('hidden');
 }
 
-function capitalizeFirstLetter(string) {
+function changePage(type, direction) {
+    const newPage = currentPage[type] + direction;
+    if (newPage > 0 && newPage <= totalPages[type]) {
+        if (type === 'accounts') fetchAccounts(newPage);
+        else if (type === 'collections') fetchCollections(newPage);
+        else if (type === 'badTransactions') fetchBadTransactions(newPage);
+    }
+}
+
+function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
