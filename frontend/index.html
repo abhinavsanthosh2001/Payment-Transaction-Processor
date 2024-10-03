@@ -15,8 +15,11 @@
         <main>
             <section class="upload-section">
                 <h2>Upload File</h2>
-                <input type="file" id="fileInput">
-                <button id="uploadBtn"><i class="fas fa-upload"></i> Upload</button>
+                <div class="file-upload-container">
+                    <input type="file" id="fileInput" class="file-input">
+                    <label for="fileInput" class="custom-file-label"><i class="fas fa-file-upload"></i> Choose File</label>
+                    <button id="uploadBtn"><i class="fas fa-upload"></i> Upload</button>
+                </div>
             </section>
             <section class="actions-section">
                 <h2>Actions</h2>
@@ -47,7 +50,7 @@
             </section>
             <section class="table-section">
                 <h2>Collections</h2>
-                <table id="collectionsTable">
+                <table id="collectionsTable" >
                     <thead>
                         <tr>
                             <th>Account Name</th>
@@ -62,12 +65,12 @@
                 <div class="pagination-section" id="collectionsPagination">
                     <button id="prevCollectionsPageBtn"><i class="fas fa-arrow-left"></i> Previous Page</button>
                     <span id="collectionsPageInfo">Page 1 of 1</span>
-                    <button id="nextCollectionsPageBtn">Next Page <i class="fas fa-arrow-right"></i></button>
+                    <button id="nextCollectionsPageBtn"><i class="fas fa-arrow-right"></i> Next Page</button>
                 </div>
             </section>
             <section class="table-section">
                 <h2>Bad Transactions</h2>
-                <table id="badTransactionsTable">
+                <table id="badTransactionsTable" >
                     <thead>
                         <tr>
                             <th>Account Name</th>
@@ -85,7 +88,7 @@
                 <div class="pagination-section" id="badTransactionsPagination">
                     <button id="prevBadTransactionsPageBtn"><i class="fas fa-arrow-left"></i> Previous Page</button>
                     <span id="badTransactionsPageInfo">Page 1 of 1</span>
-                    <button id="nextBadTransactionsPageBtn">Next Page <i class="fas fa-arrow-right"></i></button>
+                    <button id="nextBadTransactionsPageBtn"><i class="fas fa-arrow-right"></i> Next Page</button>
                 </div>
             </section>
         </main>

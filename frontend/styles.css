@@ -79,6 +79,31 @@ button:disabled {
     background-color: #218838; /* Darker green on hover */
 }
 
+.custom-file-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.custom-file-label i {
+    margin-right: 8px;
+}
+
+.custom-file-label:hover {
+    background-color: #0056b3;
+}
+
+.file-input {
+    display: none;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
